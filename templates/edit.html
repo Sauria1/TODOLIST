@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Task</title>
+</head>
+<body>
+    <h1>Edit Task</h1>
+    {% if task %}
+    <form action="/edit/{{ task_id }}" method="post">
+        <input type="text" name="description" value="{{ task.description }}" required>
+        <input type="date" name="date" value="{{ task.date }}" required>
+        <button type="submit">Save</button>
+    </form>
+    {% else %}
+    <p>Task not found!</p>
+    {% endif %}
+    <a href="/">Back to list</a>
+</body>
+</html>

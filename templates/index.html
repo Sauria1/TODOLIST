@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO List</title>
+</head>
+<body>
+    <h1>TODO List</h1>
+    <form action="/add" method="post">
+        <input type="text" name="description" placeholder="Task description" required>
+        <input type="date" name="date" required>
+        <button type="submit">Add Task</button>
+    </form>
+    <ul>
+        {% for task in tasks %}
+        <li>
+            {{ task.description }} - {{ task.date }}
+            <form action="/delete/{{ task.id }}" method="post" style="display:inline;">
+                <button type="submit">Delete</button>
+            </form>
+            <a href="/edit/{{ task.id }}">Edit</a>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
